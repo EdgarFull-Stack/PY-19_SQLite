@@ -50,6 +50,7 @@ def change_klase_by_name(klase, vardas):
 change_klase_by_name(8,'John')
 print_all_studentai_rows()
 print('-'*40)
+
 def remove_row_by_name(vardas):
     with sqlite3.connect('pavyzdys.db') as conn:
         c = conn.cursor()

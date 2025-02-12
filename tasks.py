@@ -40,3 +40,11 @@ def print_mokykla_by_skaicius(mokiniu_skaicius):
         for row in c.execute('SELECT * FROM mokykla WHERE mokiniu_skaicius >= ?',(mokiniu_skaicius,)):
             print(row)
 print(print_mokykla_by_skaicius(600))
+print('-'*40)
+# Task 4
+def atnaujinti_mokiniu_skaiciu(pavadinimas, naujas_skaicius ):
+    with sqlite3.connect('mokykla.db') as coon:
+        c = coon.cursor()
+        c.execute('UPDATE mokykla SET mokiniu_skaicius = ? WHERE pavadinimas = ?',(naujas_skaicius, pavadinimas))
+atnaujinti_mokiniu_skaiciu("Vilniausprogimnazija",1000)
+print_all_mokykla_rows()
