@@ -42,3 +42,23 @@ def print_all_studentai_by_klase(klase):
 print_all_studentai_rows()
 print_all_studentai_names()
 print_all_studentai_by_klase(10)
+print('-'*40)
+def change_klase_by_name(klase, vardas):
+    with sqlite3.connect('pavyzdys.db') as coon:
+        c = coon.cursor()
+        c.execute('UPDATE studentai SET klase = ? WHERE vardas = ?',(klase, vardas,))
+change_klase_by_name(8,'John')
+print_all_studentai_rows()
+print('-'*40)
+def remove_row_by_name(vardas):
+    with sqlite3.connect('pavyzdys.db') as conn:
+        c = conn.cursor()
+        c.execute('DELETE FROM studentai WHERE vardas = ?', (vardas,))
+remove_row_by_name('John')
+print_all_studentai_rows()
+print('-'*40)
+# use very carefully
+def delete_all_rows():
+    with sqlite3.connect('pavyzdys.db') as conn:
+        c = conn.cursor()
+        c.execute('DELETE FROM studentai')
